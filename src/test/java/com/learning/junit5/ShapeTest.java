@@ -25,8 +25,15 @@ class ShapeTest {
         assertNotEquals(9, shape.areaOfSquare(5), () -> "Error at calculating area of a square");
     }
 
+    //pass if condition true
     @Test
     void testAsserTrue() {
         assertTrue(true);
+    }
+
+    //pass if condition false
+    @Test
+    void testAsserFalse() {
+        assertFalse(false);
     }
 }
