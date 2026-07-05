@@ -36,4 +36,14 @@ class ShapeTest {
     void testAsserFalse() {
         assertFalse(false);
     }
+
+    //pass if two objects are equal
+    @Test
+    void testAssertSame() {
+
+        String str = "Java";
+        String expected = str;
+
+        assertSame(str, expected);
+    }
 }
