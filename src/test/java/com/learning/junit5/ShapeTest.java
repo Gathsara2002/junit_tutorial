@@ -19,4 +19,9 @@ class ShapeTest {
     void areaOfCircle() {
         assertEquals(154, shape.areaOfCircle(7), () -> "Error at calculating area of circle");
     }
+
+    @Test
+    void areaOfSquareTest() {
+        assertNotEquals(9, shape.areaOfSquare(5), () -> "Error at calculating area of a square");
+    }
 }
