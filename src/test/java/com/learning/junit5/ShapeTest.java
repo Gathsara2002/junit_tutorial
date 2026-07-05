@@ -46,4 +46,13 @@ class ShapeTest {
 
         assertSame(str, expected);
     }
+
+    @Test
+    void testArrayEquals() {
+
+        int[] arr1 = new int[] { 1, 2, 3 };
+        int[] arr2 = new int[] { 1, 2, 3 };
+
+        assertArrayEquals(arr1, arr2);
+    }
 }
