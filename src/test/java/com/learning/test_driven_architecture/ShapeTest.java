@@ -1,4 +1,4 @@
-package com.junit.test_driven_architecture;
+package com.learning.test_driven_architecture;
 
 import org.junit.jupiter.api.Test;
 

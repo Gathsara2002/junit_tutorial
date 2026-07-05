@@ -1,4 +1,4 @@
-package com.junit.test_driven_architecture;
+package com.learning.test_driven_architecture;
 
 public class Shape {
 

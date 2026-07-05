@@ -1,4 +1,4 @@
-package com.junit;
+package com.learning;
 
 public class Calc {
 
