@@ -1,14 +1,17 @@
 package com.learning.lifecycle;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BankAccountTest {
 
     private BankAccount account;
+
+    @BeforeAll
+    static void setUpAll(){
+        System.out.println("Before All");
+    }
 
     //call before every test method
     @BeforeEach
@@ -40,5 +43,10 @@ class BankAccountTest {
     @AfterEach
     void tearDown() {
         account = null;
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        System.out.println("After All");
     }
 }
