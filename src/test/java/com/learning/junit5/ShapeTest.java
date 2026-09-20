@@ -42,9 +42,8 @@ class ShapeTest {
     void testAssertSame() {
 
         String str = "Java";
-        String expected = str;
 
-        assertSame(str, expected);
+        assertSame(str, str);
     }
 
     @Test
@@ -54,5 +53,15 @@ class ShapeTest {
         int[] arr2 = new int[] { 1, 2, 3 };
 
         assertArrayEquals(arr1, arr2);
+    }
+
+    @Test
+    void testNull(){
+        assertNull(null);
+    }
+
+    @Test
+    void testNotNull(){
+        assertNotNull(shape);
     }
 }
