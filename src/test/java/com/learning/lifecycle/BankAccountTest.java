@@ -1,5 +1,6 @@
 package com.learning.lifecycle;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +34,11 @@ class BankAccountTest {
         account.withdraw(30);
 
         assertEquals(70, account.getBalance());
+    }
+
+    //After every test method this execute
+    @AfterEach
+    void tearDown() {
+        account = null;
     }
 }
