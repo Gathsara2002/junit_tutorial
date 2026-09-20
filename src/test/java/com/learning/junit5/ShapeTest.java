@@ -49,19 +49,28 @@ class ShapeTest {
     @Test
     void testArrayEquals() {
 
-        int[] arr1 = new int[] { 1, 2, 3 };
-        int[] arr2 = new int[] { 1, 2, 3 };
+        int[] arr1 = new int[]{1, 2, 3};
+        int[] arr2 = new int[]{1, 2, 3};
 
         assertArrayEquals(arr1, arr2);
     }
 
     @Test
-    void testNull(){
+    void testNull() {
         assertNull(null);
     }
 
     @Test
-    void testNotNull(){
+    void testNotNull() {
         assertNotNull(shape);
+    }
+
+    @Test
+    void testExceptions() {
+        ArithmeticException arithmeticException = assertThrows(ArithmeticException.class, () -> {
+            int result = 10 / 0;
+        });
+
+        System.out.print(arithmeticException.getLocalizedMessage());
     }
 }
