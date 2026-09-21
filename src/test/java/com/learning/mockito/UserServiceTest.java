@@ -1,26 +1,42 @@
 package com.learning.mockito;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
 class UserServiceTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @InjectMocks
+    private UserService service;
 
     @Test
     void shouldGetUserName() {
 
-        UserRepository userRepository = mock(UserRepository.class);
+//      UserRepository userRepository = mock(UserRepository.class);
 
         when(userRepository.findUserName(10L)).thenReturn("Gathsara");
 
-        UserService service = new UserService(userRepository);
+//        UserService service = new UserService(userRepository);
 
-        // Act
         String result = service.getUserName(10L);
 
-        // Assert
         assertEquals("Gathsara", result);
+
+        //verify user repository method called at least one time for any given long id
+        verify(userRepository, atLeastOnce()).findUserName(anyLong());
+
+        //verify no more repository method call during test
+        verifyNoMoreInteractions(userRepository);
 
     }
 }
