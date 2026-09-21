@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
@@ -56,4 +57,18 @@ class UserServiceTest {
         assertEquals(23, capturedUser.getAge());
 
     }
+
+    @Test
+    void shouldHandleRepositoryException() {
+
+        when(userRepository.findById(10L)).thenThrow(new RuntimeException("Database error"));
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> service.getUser(10L)
+        );
+
+        assertEquals("Database error", exception.getMessage());
+    }
+
 }

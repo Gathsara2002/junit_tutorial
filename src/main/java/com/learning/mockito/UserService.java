@@ -20,4 +20,9 @@ class UserService {
 
         userRepository.save(user);
     }
+
+    public void getUser(Long id) {
+        userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
 }
