@@ -2,6 +2,7 @@ package com.learning.mockito;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -37,6 +38,22 @@ class UserServiceTest {
 
         //verify no more repository method call during test
         verifyNoMoreInteractions(userRepository);
+
+    }
+
+    @Test
+    void shouldCreateUser(){
+
+        service.createUser();
+
+        ArgumentCaptor<User> captor = ArgumentCaptor.forClass(User.class);
+
+        verify(userRepository).save(captor.capture());
+
+        User capturedUser = captor.getValue();
+
+        assertEquals("Gathsara", capturedUser.getName());
+        assertEquals(23, capturedUser.getAge());
 
     }
 }
